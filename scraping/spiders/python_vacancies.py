@@ -44,7 +44,9 @@ class PythonVacanciesSpider(scrapy.Spider):
                 response.css(".bi-pencil-square + div::text").get()
             ),
             "publication_date": self.get_publication_date(response),
-            "views_count": int(response.css(".text-muted").re_first(r"(\d+) перегляд")),
+            "views_count": int(
+                response.css(".text-muted").re_first(r"(\d+) перегляд")
+            ),
             "applicant_count": int(
                 response.css(".text-muted").re_first(r"(\d+) відгук")
             ),
